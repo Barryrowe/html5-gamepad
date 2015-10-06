@@ -23,6 +23,9 @@ function transformButton(mapping, gp, button, i) {
 function transformAxis(mapping, threshold, gp, axis, i) {
 	var ma = mapping.axes[i] || { name: "axis " + i };
 	gp.axes[ma.name] = axis;
+	if (ma.scale === "to positive") {
+		gp.axes[ma.name] = (axis + 1.0) / 2.0;
+	}
 	if (ma.buttons) {
 		if (ma.buttons[0] !== null) {
 			gp.buttons[ma.buttons[0]] = axis < -threshold;
@@ -71,11 +74,17 @@ Gamepad.prototype.axis = function(gamepad, axis) {
 Gamepad.prototype.count = function() {
 	return this.gamepads.length;
 }
-Gamepad.prototype.isPressed = function(gamepad, button) {
+Gamepad.prototype.button = function(gamepad, button) {
 	if (gamepad >= this.gamepads.length) {
 		return false;
 	}
 	return this.gamepads[gamepad].buttons[button];
+};
+Gamepad.prototype.name = function(gamepad) {
+	if (gamepad >= this.gamepads.length) {
+		return undefined;
+	}
+	return this.gamepads[gamepad].id;
 };
 
 module.exports = Gamepad;
@@ -137,6 +146,7 @@ module.exports=[
 			},
 			{
 				"name": "left trigger",
+				"scale": "to positive",
 				"buttons": [
 					null,
 					"left trigger",
@@ -158,6 +168,7 @@ module.exports=[
 			},
 			{
 				"name": "right trigger",
+				"scale": "to positive",
 				"buttons": [
 					null,
 					"right trigger",
@@ -245,6 +256,471 @@ module.exports=[
 			},
 			{
 				"name": "home"
+			},
+		],
+		"axes": [
+			{
+				"name": "left stick x",
+				"buttons": [
+					"left stick left",
+					"left stick right",
+				]
+			},
+			{
+				"name": "left stick y",
+				"buttons": [
+					"left stick up",
+					"left stick down",
+				]
+			},
+			{
+				"name": "right stick x",
+				"buttons": [
+					"right stick left",
+					"right stick right",
+				]
+			},
+			{
+				"name": "right stick y",
+				"buttons": [
+					"right stick up",
+					"right stick down",
+				]
+			}
+		]
+	},
+	{
+		"id": "Sony Computer Entertainment Wireless Controller",
+		"userAgent": "Firefox",
+		"buttons": [
+			{
+				"name": "x"
+			},
+			{
+				"name": "a"
+			},
+			{
+				"name": "b"
+			},
+			{
+				"name": "y"
+			},
+			{
+				"name": "left shoulder"
+			},
+			{
+				"name": "right shoulder"
+			},
+			{
+				"name": "left trigger"
+			},
+			{
+				"name": "right trigger"
+			},
+			{
+				"name": "back"
+			},
+			{
+				"name": "start"
+			},
+			{
+				"name": "left stick"
+			},
+			{
+				"name": "right stick"
+			},
+			{
+				"name": "home"
+			},
+			{
+				"name": "touch"
+			}
+		],
+		"axes": [
+			{
+				"name": "left stick x",
+				"buttons": [
+					"left stick left",
+					"left stick right",
+				]
+			},
+			{
+				"name": "left stick y",
+				"buttons": [
+					"left stick up",
+					"left stick down",
+				]
+			},
+			{
+				"name": "right stick x",
+				"buttons": [
+					"right stick left",
+					"right stick right",
+				]
+			},
+			{
+				"name": "left trigger",
+				"scale": "to positive"
+			},
+			{
+				"name": "right trigger",
+				"scale": "to positive"
+			},
+			{
+				"name": "right stick y",
+				"buttons": [
+					"right stick up",
+					"right stick down",
+				]
+			},
+			{
+				"name": "dpad x",
+				"buttons": [
+					"dpad left",
+					"dpad right",
+				]
+			},
+			{
+				"name": "dpad y",
+				"buttons": [
+					"dpad up",
+					"dpad down",
+				]
+			}
+		]
+	},
+	{
+		"id": "Sony Computer Entertainment Wireless Controller",
+		"userAgent": "WebKit",
+		"buttons": [
+			{
+				"name": "a"
+			},
+			{
+				"name": "b"
+			},
+			{
+				"name": "x"
+			},
+			{
+				"name": "y"
+			},
+			{
+				"name": "left shoulder"
+			},
+			{
+				"name": "right shoulder"
+			},
+			{
+				"name": "left trigger",
+				"axis": "left trigger",
+				"axisValue": 1
+			},
+			{
+				"name": "right trigger",
+				"axis": "right trigger",
+				"axisValue": 1
+			},
+			{
+				"name": "back"
+			},
+			{
+				"name": "start"
+			},
+			{
+				"name": "left stick"
+			},
+			{
+				"name": "right stick"
+			},
+			{
+				"name": "dpad up",
+				"axis": "dpad y",
+				"axisValue": -1
+			},
+			{
+				"name": "dpad down",
+				"axis": "dpad y",
+				"axisValue": 1
+			},
+			{
+				"name": "dpad left",
+				"axis": "dpad x",
+				"axisValue": -1
+			},
+			{
+				"name": "dpad right",
+				"axis": "dpad x",
+				"axisValue": 1
+			},
+			{
+				"name": "home"
+			},
+			{
+				"name": "touch"
+			}
+		],
+		"axes": [
+			{
+				"name": "left stick x",
+				"buttons": [
+					"left stick left",
+					"left stick right",
+				]
+			},
+			{
+				"name": "left stick y",
+				"buttons": [
+					"left stick up",
+					"left stick down",
+				]
+			},
+			{
+				"name": "right stick x",
+				"buttons": [
+					"right stick left",
+					"right stick right",
+				]
+			},
+			{
+				"name": "right stick y",
+				"buttons": [
+					"right stick up",
+					"right stick down",
+				]
+			}
+		]
+	},
+	{
+		"id": "Sony PLAYSTATION(R)3 Controller",
+		"userAgent": "Firefox",
+		"buttons": [
+			{
+				"name": "back",
+			},
+			{
+				"name": "left stick",
+			},
+			{
+				"name": "right stick",
+			},
+			{
+				"name": "start",
+			},
+			{
+				"name": "dpad up",
+			},
+			{
+				"name": "dpad right",
+			},
+			{
+				"name": "dpad down",
+			},
+			{
+				"name": "dpad left",
+			},
+			{
+				"name": "left trigger",
+			},
+			{
+				"name": "right trigger",
+			},
+			{
+				"name": "left shoulder",
+			},
+			{
+				"name": "right shoulder",
+			},
+			{
+				"name": "y",
+			},
+			{
+				"name": "b",
+			},
+			{
+				"name": "a",
+			},
+			{
+				"name": "x",
+			},
+			{
+				"name": "home",
+			},
+		],
+		"axes": [
+			{
+				"name": "left stick x",
+				"buttons": [
+					"left stick left",
+					"left stick right",
+				]
+			},
+			{
+				"name": "left stick y",
+				"buttons": [
+					"left stick up",
+					"left stick down",
+				]
+			},
+			{
+				"name": "right stick x",
+				"buttons": [
+					"right stick left",
+					"right stick right",
+				]
+			},
+			{
+				"name": "right stick y",
+				"buttons": [
+					"right stick up",
+					"right stick down",
+				]
+			},
+			{
+				"name": "dunno 1",
+			},
+			{
+				"name": "dunno 2",
+			},
+			{
+				"name": "dunno 3",
+			},
+			{
+				"name": "dunno 4",
+			},
+			{
+				"name": "dpad up",
+				"scale": "to positive"
+			},
+			{
+				"name": "dpad right",
+				"scale": "to positive"
+			},
+			{
+				"name": "dpad down",
+				"scale": "to positive"
+			},
+			{
+				"name": "dunno 8",
+			},
+			{
+				"name": "left trigger",
+				"scale": "to positive"
+			},
+			{
+				"name": "right trigger",
+				"scale": "to positive"
+			},
+			{
+				"name": "left shoulder",
+				"scale": "to positive"
+			},
+			{
+				"name": "right shoulder",
+				"scale": "to positive"
+			},
+			{
+				"name": "y",
+				"scale": "to positive"
+			},
+			{
+				"name": "b",
+				"scale": "to positive"
+			},
+			{
+				"name": "a",
+				"scale": "to positive"
+			},
+			{
+				"name": "x",
+				"scale": "to positive"
+			},
+			{
+				"name": "dunno 9",
+			},
+			{
+				"name": "dunno 10",
+			},
+			{
+				"name": "dunno 11",
+			},
+			{
+				"name": "accelerometer x",
+			},
+			{
+				"name": "accelerometer y",
+			},
+			{
+				"name": "accelerometer z",
+			}
+		]
+	},
+	{
+		"id": "Sony PLAYSTATION(R)3 Controller",
+		"userAgent": "WebKit",
+		"buttons": [
+			{
+				"name": "a",
+			},
+			{
+				"name": "b",
+			},
+			{
+				"name": "x",
+			},
+			{
+				"name": "y",
+			},
+			{
+				"name": "left shoulder",
+			},
+			{
+				"name": "right shoulder",
+			},
+			{
+				"name": "left trigger",
+				"axis": "left trigger",
+				"axisValue": 1
+			},
+			{
+				"name": "right trigger",
+				"axis": "right trigger",
+				"axisValue": 1
+			},
+			{
+				"name": "back",
+			},
+			{
+				"name": "start",
+			},
+			{
+				"name": "left stick",
+			},
+			{
+				"name": "right stick",
+			},
+			{
+				"name": "dpad up",
+				"axis": "dpad y",
+				"axisValue": -1
+			},
+			{
+				"name": "dpad down",
+				"axis": "dpad y",
+				"axisValue": 1
+			},
+			{
+				"name": "dpad left",
+				"axis": "dpad x",
+				"axisValue": -1
+			},
+			{
+				"name": "dpad right",
+				"axis": "dpad x",
+				"axisValue": 1
+			},
+			{
+				"name": "home",
 			},
 		],
 		"axes": [
