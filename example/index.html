@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>html5-gamepad Test Page</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<h1><a href="https://github.com/ericlathrop/html5-gamepad">html5-gamepad</a> Test Page</h1>
@@ -10,6 +11,35 @@
 	<pre>
 		<div id="content"></div>
 	</pre>
+
+	<div class="buttons">
+	    <button class="button aButton" title="A Button">A</button>
+	    <button class="button bButton" title="B Button">B</button>
+	    <button class="button xButton" title="X Button">X</button>
+	    <button class="button yButton" title="Y Button">Y</button>
+	    <button class="button leftTrigger" title="Left Trigger">LT</button>
+	    <button class="button leftBumper" title="Left Bumper">LB</button>
+	    <button class="button rightTrigger" title="Right Trigger">RT</button>
+	    <button class="button rightBumper" title="Right Bumper">RB</button>
+	    <button class="button leftStickUp" title="Left stick up"></button>
+	    <button class="button leftStickRight" title="Left stick right"></button>
+	    <button class="button leftStickDown" title="Left stick down"></button>
+	    <button class="button leftStickLeft" title="Left stick left"></button>
+	    <button class="button leftStickPressed" title="Left stick pressed"></button>
+	    <button class="button rightStickUp" title="Right stick up"></button>
+	    <button class="button rightStickRight" title="Right stick right"></button>
+	    <button class="button rightStickDown" title="Right stick down"></button>
+	    <button class="button rightStickLeft" title="Right stick left"></button>
+	    <button class="button rightStickPressed" title="Right stick pressed"></button>
+	    <button class="button dPadUp" title="Directional pad up"></button>
+	    <button class="button dPadRight" title="Directional pad right"></button>
+	    <button class="button dPadDown" title="Directional pad down"></button>
+	    <button class="button dPadLeft" title="Directional pad left"></button>
+	    <button class="button back" title="back"></button>
+	    <button class="button start" title="Start"></button>
+	    <button class="button guide" title="Guide"></button>
+	</div>
+
 	<script type="text/javascript" src="index.js"></script>
 	<script>
 		var g = new Gamepad();
